@@ -29,14 +29,14 @@ const registerSchema = yup.object({
 
 })
 
-const Form = () => {
+const Form = ({navigation}) => {
 
     const [page, setPage] = useState(1);
 
     return(
         <View style={{flex : 1, alignItems : 'center', justifyContent : 'center'}}>
             
-
+            <Button title="Home Page" onPress={() => navigation.navigate('Home')} />
             <Formik
                 initialValues={{business_name : '', business_contact_no: '', business_email : '', short_description : '', building_name: '', area_name : '', city : '', state : '', country : '', pincode : '', landmark  : ''}}
                 validationSchema={registerSchema}
