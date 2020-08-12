@@ -18,6 +18,7 @@ const screens = {
         screen : HomeStack,
         navigationOptions : ({navigation}) => ({
             headerLeft :  () => <Icon name="menu" size={24} color="black" onPress={() => navigation.openDrawer()} />,
+            title : ''
         })
     }
 }
