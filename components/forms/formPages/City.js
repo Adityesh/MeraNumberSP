@@ -6,7 +6,7 @@ import {Button} from 'react-native-material-ui';
 const City = (props) => {
 
     const next = () => {
-        if(props.errors.city === undefined){props.setPage(props.page + 1)}
+        if(props.errors.city === undefined && props.values.city !== ''){props.setPage(props.page + 1)}
     }
 
     const back = () => {

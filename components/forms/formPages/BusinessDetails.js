@@ -6,10 +6,12 @@ import {Button} from 'react-native-material-ui';
 const Description = (props) => {
 
     const next = () => {
-        if(props.errors.building_name === undefined && props.errors.area_name === undefined && props.errors.landmark === undefined && props.errors.pincode === undefined) {
+        if((props.errors.building_name === undefined && props.errors.area_name === undefined && props.errors.landmark === undefined && props.errors.pincode === undefined) && (props.values.building_name !== '' && props.values.area_name !== '' && props.values.landmark !== '' && props.values.pincode !== '')) {
             props.setPage(props.page + 1)
 
         }
+
+        
     }
 
     const back = () => {
@@ -52,6 +54,7 @@ const Description = (props) => {
                 value={props.values.pincode}
                 placeholder={'Pincode of your locality'}
                 onBlur={props.handleBlur('pincode')}
+                keyboardType={'numeric'}
             />
             <Text>{props.errors.pincode}</Text>
 

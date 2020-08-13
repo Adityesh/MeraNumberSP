@@ -5,9 +5,10 @@ import {Button} from 'react-native-material-ui';
 const BusinessName = (props) => {
 
     const next = () => {
-        if(props.errors.business_name === undefined) {
+        if(props.errors.business_name === undefined && props.values.business_name !== '') {
+            
             props.setPage(props.page + 1)
-        }
+        } 
         
     }
 

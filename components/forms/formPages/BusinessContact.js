@@ -6,7 +6,7 @@ import {Button} from 'react-native-material-ui';
 const BusinessContact = (props) => {
 
     const next = () => {
-        if(props.errors.business_contact_no === undefined) {
+        if(props.errors.business_contact_no === undefined && props.values.business_contact_no !== '') {
             props.setPage(props.page + 1)
         }
         
@@ -24,7 +24,7 @@ const BusinessContact = (props) => {
                 placeholder={'Enter the contact number for your business'}
                 style={globalStyles.formInput}
                 onBlur={props.handleBlur('business_contact_no')}
-
+                keyboardType={'numeric'}
             />
             <Text>{props.errors.business_contact_no}</Text>
         <View>

@@ -6,7 +6,7 @@ import {Button} from 'react-native-material-ui';
 const BusinessEmail = (props) => {
 
     const next = () => {
-        if(props.errors.business_email === undefined) {
+        if(props.errors.business_email === undefined && props.values.business_email !== '') {
             props.setPage(props.page + 1)
         }
         
@@ -24,7 +24,7 @@ const BusinessEmail = (props) => {
                 placeholder={'Enter the email address of your business'}
                 style={globalStyles.formInput}
                 onBlur={props.handleBlur('business_email')}
-
+                keyboardType={'email-address'}
             />
             <Text>{props.errors.business_email}</Text>
         <View>

@@ -17,7 +17,7 @@ const screens = {
     Home : {
         screen : HomeStack,
         navigationOptions : ({navigation}) => ({
-            headerLeft :  () => <Icon name="menu" size={24} color="black" onPress={() => navigation.openDrawer()} />,
+            headerLeft :  () => <Icon name="menu" size={24} color="black" style={{marginLeft : 5}} onPress={() => navigation.openDrawer()} />,
             title : ''
         })
     }
