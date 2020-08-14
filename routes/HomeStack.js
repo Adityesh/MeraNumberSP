@@ -3,6 +3,7 @@ import React from 'react'
 import Home from '../components/Home'
 import { Button } from 'react-native'
 import NewService from '../components/NewService';
+import NewEmployee from '../components/NewEmployee';
 
 const screens = {
     Home : {
@@ -17,6 +18,13 @@ const screens = {
         screen : NewService,
         navigationOptions : {
             title : 'Add a New Service'
+        }
+    },
+
+    NewEmployee : {
+        screen : NewEmployee,
+        navigationOptions : {
+            title : 'Add a New Employee'
         }
     }
 

@@ -8,6 +8,7 @@ import BusinessName from './formPages/BusinessName';
 import BusinessEmail from './formPages/BusinessEmail';
 import BusinessContact from './formPages/BusinessContact';
 import BusinessDetails from './formPages/BusinessDetails';
+import BusinessTime from './formPages/BusinessTime';
 import City from './formPages/City';
 import State from './formPages/State';
 import Country from './formPages/Country';
@@ -25,7 +26,9 @@ const registerSchema = yup.object({
     state : yup.string().required("Field cannot be empty").typeError("State must be a string"),
     pincode : yup.number().required("Field cannot be empty").typeError("Pincode cannot contain letters"),
     landmark : yup.string().required("Field cannot be empty").typeError("Landmark must be a string"),
-    country : yup.string().required("Field cannot be empty").typeError("Country must be a string")
+    country : yup.string().required("Field cannot be empty").typeError("Country must be a string"),
+    opening_time : yup.string().required(),
+    closing_time : yup.string().required(),
 
 })
 
@@ -36,9 +39,9 @@ const Form = ({navigation}) => {
     return(
         <View style={{flex : 1, alignItems : 'center', justifyContent : 'center'}}>
             
-            <Button title="Home Page" onPress={() => navigation.navigate('Home')} />
+            
             <Formik
-                initialValues={{business_name : '', business_contact_no: '', business_email : '', short_description : '', building_name: '', area_name : '', city : '', state : '', country : '', pincode : '', landmark  : ''}}
+                initialValues={{business_name : '', business_contact_no: '', business_email : '', short_description : '', building_name: '', area_name : '', city : '', state : '', country : '', pincode : '', landmark  : '', opening_time : "00:00", closing_time : "23:00"}}
                 validationSchema={registerSchema}
                 onSubmit={(values, actions) => {
                     actions.resetForm();
@@ -46,7 +49,7 @@ const Form = ({navigation}) => {
                 }}
             >
 
-                {({handleChange, handleBlur, handleSubmit, values, touched, errors, resetForm}) => {
+                {({handleChange, handleBlur, handleSubmit, values, touched, errors, resetForm, setFieldValue}) => {
                         switch(page) {
                             case 1:
                                 return(
@@ -99,8 +102,20 @@ const Form = ({navigation}) => {
                                     handleBlur={handleBlur}
 
                                    />)
-
                             case 5:
+                                return(<BusinessTime
+                                    handleChange={handleChange} 
+                                    handleSubmit={handleSubmit} 
+                                    values={values} 
+                                    page={page}
+                                    setPage={setPage}
+                                    errors={errors}
+                                    touched={touched}
+                                    handleBlur={handleBlur}
+                                    setFieldValue={setFieldValue}
+                                   />)
+
+                            case 6:
                                 return(<City
                                     handleChange={handleChange} 
                                     handleSubmit={handleSubmit} 
@@ -113,7 +128,7 @@ const Form = ({navigation}) => {
 
                                    />)
 
-                            case 6:
+                            case 7:
                                 return(<State
                                     handleChange={handleChange} 
                                     handleSubmit={handleSubmit} 
@@ -126,7 +141,7 @@ const Form = ({navigation}) => {
 
                                    />)
 
-                            case 7:
+                            case 8:
                                 return(<Country
                                     handleChange={handleChange} 
                                     handleSubmit={handleSubmit} 
@@ -138,7 +153,7 @@ const Form = ({navigation}) => {
                                     handleBlur={handleBlur}
 
                                    />)
-                            case 8:
+                            case 9:
                                 return(<Confirm
                                     handleChange={handleChange} 
                                     handleSubmit={handleSubmit} 
